@@ -1,0 +1,384 @@
+/*
+  Name:              David Bui
+  Email address:     David_Bui@student.uml.edu
+  Affiliation:       Student at UMass Lowell in course COMP 4610 GUI Programming I
+  Date file created: November 30, 2016
+  Short Description: This is the css file to actually make page along with the board
+                     look pretty. Credit goes to Anthony Salani's example board for 
+                     this format.
+*/
+
+h1 {
+   font-weight:bold;
+}
+
+/*
+  Makes background blue
+*/
+body {
+  background-color: blue;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* 
+  General board layout. This is where all of the tiles will be placed. 
+*/
+#board {
+  background-color: #000;
+  box-shadow: 0 0 3px 1px #000;
+  height: 705px;
+  left: 82px;
+  position: absolute;
+  top: 15px;
+  width: 705px;
+}
+
+/* 
+  Where all of the squares go on the board 
+*/
+#board > #squares {
+  position: absolute;
+  z-index: 1;
+}
+
+/* 
+  Location on the board to place a Scrabble tile 
+*/
+#board > #squares > .square {
+  background-color: #FFF;
+  border: 1px dotted #BBB;
+  float: left;
+  height: 47px;
+  padding: 1px;
+  width: 47px;
+}
+
+/* 
+  Square with the star on it that denotes the starting location. 
+*/
+#board > #squares > .square.star {
+  background-color: yellow;
+  border-color: #080;
+}
+
+/* 
+  Squares that multiply the letter score by 2. 
+*/
+#board > #squares > .square.ltr2 {
+  background-color: #88F;
+  border-color: #008;
+}
+
+/* 
+  Squares that multiply the letter score by 3. 
+*/
+#board > #squares > .square.ltr3 {
+  background-color: #44D;
+  border-color: #008;
+}
+
+/* 
+  Squares that multiply the word score by 2. 
+*/
+#board > #squares > .square.wrd2 {
+  background-color: #F88;
+  border-color: #800;
+}
+
+/* 
+  Squares that multiply the word score by 3. 
+*/
+#board > #squares > .square.wrd3 {
+  background-color: #D44;
+  border-color: #800;
+}
+
+/* 
+  Container for letter tiles 
+*/
+#board > #placed-tiles {
+  position: absolute;
+}
+
+/* 
+  Letter tiles 
+*/
+#board > #placed-tiles > .tile {
+  background-image: url(img/scrabble/tile2.png);
+  height: 43px;
+  position: absolute;
+  width: 43px;
+  z-index: 11;
+}
+
+/* 
+  Container for letter tiles not yet permanently placed 
+*/
+#board > #staged-tiles {
+  position: absolute;
+}
+
+/* 
+  Letter tiles not yet permanently placed 
+*/
+#board > #staged-tiles > .tile {
+  background-image: url(img/scrabble/tile2-dark.png);
+  cursor: pointer;
+  height: 43px;
+  position: absolute !important;
+  width: 43px;
+  z-index: 12;
+}
+
+/* 
+  Currently moving staged tiles 
+*/
+#board > #staged-tiles > .tile.ui-draggable-dragging {
+  z-index: 22;
+}
+
+/* 
+  Setting for the board and the other UI elements. The board is 
+  center, the tiles are on the left, and the menu is on the right. 
+*/
+#outline {
+  background-image: url(img/scrabble/bkg.png);
+  border: 5px solid #000;
+  border-radius: 5px;
+  bottom: 0;
+  box-shadow: 0 5px 20px 0 #000000;
+  height: 745px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1061px;
+}
+
+/* 
+  Location for the menu and score UI components. 
+*/
+#side-right {
+  background-color: #DC143C;
+  box-shadow: 0 0 3px 1px #000;
+  height: 705px;
+  left: 800px;
+  padding: 5px;
+  position: absolute;
+  top: 15px;
+  width: 230px;
+}
+
+#side-right > .center-btn, #side-right > .center-hollow {
+  display: table;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#side-right > .center-btn {
+  background-color: #FFF;
+  border: 3px solid;
+  border-left-color: #EEE;
+  border-top-color: #EEE;
+  border-right-color: #999;
+  border-bottom-color: #999;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#side-right > .center-btn:active {
+  background-color: #BBB;
+  border-left-color: #999;
+  border-top-color: #999;
+  border-right-color: #EEE;
+  border-bottom-color: #EEE;
+}
+
+#side-right > .center-hollow {
+  border-bottom: 1px dotted #291f13;
+  color: #FFF;
+}
+
+#side-right > .center-btn.btn-disabled {
+  background-color: #DDD;
+  border-color: #888;
+  color: #888;
+}
+
+#side-right > .center-hollow.err {
+  color: #FFF;
+}
+
+#side-right > .center-btn > p, #side-right > .center-hollow > p {
+  display: table-cell;
+  height: 60px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* 
+  Location for your current list of letters. 
+*/
+#side-left {
+  background-color: #DC143C;
+  box-shadow: 0 0 3px 1px #000;
+  height: 705px;
+  left: 15px;
+  position: absolute;
+  top: 15px;
+  width: 51px;
+}
+
+#side-left > .tile-drop {
+  height: 63px;
+  position: relative;
+}
+
+#side-left > .tile-drop > .tile {
+  background-image: url(img/scrabble/tile2-dark.png);
+  cursor: pointer;
+  height: 43px;
+  left: 4px;
+  position: absolute !important;
+  top: 10px;
+  width: 43px;
+  z-index: 13;
+}
+
+/* 
+  Currently moving staged tiles
+*/
+#side-left > .tile.ui-draggable-dragging {
+  z-index: 22;
+}
+
+/* 
+  CSS for styling each square correctly 
+*/
+.square::before {
+  display: block;
+  font-size: 10px;
+  font-weight: bold;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.square.ltr2::before { content: '2x LETTER';}
+.square.ltr3::before { content: '3x LETTER';}
+.square.wrd2::before { content: '2x WORD';}
+.square.wrd3::before { content: '3x WORD';}
+.square.star::before { content: 'START';}
+
+/* 
+  CSS for styling each tile correctly 
+*/
+
+/* 
+  Letters 
+*/
+.tile::before {
+  display: block;
+  font-size: 30px;
+  left: 1px;
+  position: absolute;
+  text-align: center;
+  top: 3px;
+  width: 37px;
+}
+
+.tile.tile-a::before { content: 'A'; }
+.tile.tile-b::before { content: 'B'; }
+.tile.tile-c::before { content: 'C'; }
+.tile.tile-d::before { content: 'D'; }
+.tile.tile-e::before { content: 'E'; }
+.tile.tile-f::before { content: 'F'; }
+.tile.tile-g::before { content: 'G'; }
+.tile.tile-h::before { content: 'H'; }
+.tile.tile-i::before { content: 'I'; }
+.tile.tile-j::before { content: 'J'; }
+.tile.tile-k::before { content: 'K'; }
+.tile.tile-l::before { content: 'L'; }
+.tile.tile-m::before { content: 'M'; }
+.tile.tile-n::before { content: 'N'; }
+.tile.tile-o::before { content: 'O'; }
+.tile.tile-p::before { content: 'P'; }
+.tile.tile-q::before { content: 'Q'; }
+.tile.tile-r::before { content: 'R'; }
+.tile.tile-s::before { content: 'S'; }
+.tile.tile-t::before { content: 'T'; }
+.tile.tile-u::before { content: 'U'; }
+.tile.tile-v::before { content: 'V'; }
+.tile.tile-w::before { content: 'W'; }
+.tile.tile-x::before { content: 'X'; }
+.tile.tile-y::before { content: 'Y'; }
+.tile.tile-z::before { content: 'Z'; }
+.tile.tile-_::before { content: ''; }
+
+/* 
+  Values 
+*/
+.tile::after {
+  bottom: 4px;
+  font-size: 10px;
+  position: absolute;
+  right: 4px;
+}
+
+.tile.tile-a::after { content:  "1";}
+.tile.tile-b::after { content:  "3";}
+.tile.tile-c::after { content:  "3";}
+.tile.tile-d::after { content:  "2";}
+.tile.tile-e::after { content:  "1";}
+.tile.tile-f::after { content:  "4";}
+.tile.tile-g::after { content:  "2";}
+.tile.tile-h::after { content:  "4";}
+.tile.tile-i::after { content:  "1";}
+.tile.tile-j::after { content:  "8";}
+.tile.tile-k::after { content:  "5";}
+.tile.tile-l::after { content:  "1";}
+.tile.tile-m::after { content:  "3";}
+.tile.tile-n::after { content:  "1";}
+.tile.tile-o::after { content:  "1";}
+.tile.tile-p::after { content:  "3";}
+.tile.tile-q::after { content: "10";}
+.tile.tile-r::after { content:  "1";}
+.tile.tile-s::after { content:  "1";}
+.tile.tile-t::after { content:  "1";}
+.tile.tile-u::after { content:  "1";}
+.tile.tile-v::after { content:  "4";}
+.tile.tile-w::after { content:  "4";}
+.tile.tile-x::after { content:  "8";}
+.tile.tile-y::after { content:  "4";}
+.tile.tile-z::after { content: "10";}
+.tile.tile-_::after { content:   "";}
+
+/*
+  Properties of the table that tracks the number of letters remaining 
+*/
+#tile-count > .head {
+  color: #FFF;
+  text-align: center;
+}
+
+#tile-count > .count {
+  color: #FFF;
+  float: left;
+  width: 50%;
+  border: 1px solid black;
+}
+
+#tile-count > .count > .letter {
+  float: left;
+  text-align: right;
+  width: 50%;
+}
+
+#tile-count > .count > .letter-amt {
+  float: left;
+  text-align: left;
+  width: 50%;
+}
