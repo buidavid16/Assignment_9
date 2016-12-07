@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+
+ Name:              David Bui
+ Email address:     David_Bui@student.uml.edu
+ Affiliation:       Student at UMass Lowell in course COMP 4610 GUI Programming I
+ Date file created: November 30, 2016
+ Short Description: This is the html file for my Assignment 9. It is supposed set
+                    up the score for Scrabble while inserting the tiles.
+
+-->
+
+<html>
+<head>
+  <title>
+    Assignment 9
+  </title>
+
+  <!-- 
+    These are the CSS files. Credit goes to MIT for the normalize code
+  -->
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/A9_CSS.css" rel="stylesheet" type="text/css">
+
+  <!-- 
+    JavaScript and jQuery libraries used for the program
+  -->
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/underscore-min.js"></script>
+  <script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
+  <script src="js/scrabble.js"></script>
+  <script src="js/scrabble-board.js"></script>
+  <script src="js/scrabble-hand.js"></script>
+</head>
+
+<!-- 
+    Credit goes to Anthony Salani's board that was provided on Piazza 
+    for the formatting. My program is pretty similar to his in comparison 
+    with the actual display.
+-->
+<body>
+
+<h1>
+  Scrabble
+</h1>
+
+<!-- 
+    These are the placeholder divs for the board along with the parts
+    which surround it such as the tile hand
+  -->
+<div id="outline">
+  <div id="board">
+    <div id="squares"></div>
+    
+    <!-- 
+      Tiles placed on board
+    -->
+    <div id="placed-tiles"></div>
+    
+    <!-- 
+      Tiles staged to be placed
+    -->
+    <div id="staged-tiles"></div>
+  </div>
+  <div id="side-right">
+    
+    <!-- 
+      Buttons which end turn
+    -->
+    <div id="commit-btn" class="center-btn">
+      <p>
+        End Turn
+      </p>
+    </div>
+    
+    <!-- 
+      Buttons for restarting
+    -->
+    <div id="restart-btn" class="center-btn">
+      <p>
+        Restart
+      </p>
+    </div>
+    
+    <!-- 
+      Places current word score and validation errors
+    -->
+    <div id="current-score" class="center-hollow">
+      <p>
+        Current Score: 0
+      </p>
+    </div>
+    
+    <!-- 
+      Places total score
+    -->
+    <div id="total-score" class="center-hollow">
+      <p>
+        Total Score: 0
+      </p>
+    </div>
+    
+    <!-- 
+      Places tile count
+    -->
+    <div id="tile-count">
+    </div>
+  </div>
+  <div id="side-left">
+    
+  <!-- 
+    Tile rack hand
+  -->  
+  </div>
+</div>
+
+</body>
+</html>
